@@ -28,7 +28,7 @@ export default defineConfig({
     alias: {
       // sass解析错误，使用此方式解决
       '~@alifd': '@alifd',
-      '@alilc/lowcode-plugin-schema': 'http://localhost:4173/src/index.ts',
+      // '@alilc/lowcode-plugin-schema': 'http://localhost:4173/src/index.ts',
       // '@alilc/lowcode-plugin-schema': 'http://localhost:4173/index.es.js',
       '@alilc/lowcode-engine': '@felce/lowcode-engine',
       '@alilc/lowcode-types': '@felce/lowcode-types',
