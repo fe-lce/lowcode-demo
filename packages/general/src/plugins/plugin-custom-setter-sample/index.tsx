@@ -1,16 +1,12 @@
 import { IPublicModelPluginContext } from '@felce/lowcode-types';
-import TitleSetter from '@alilc/lowcode-setter-title';
-import BehaviorSetter from './setters/behavior-setter';
 import CustomSetter from './setters/custom-setter';
 
-// 保存功能示例
+// 自定义setter
 const CustomSetterSamplePlugin = (ctx: IPublicModelPluginContext) => {
   return {
     async init() {
       const { setters } = ctx;
 
-      setters.registerSetter('TitleSetter', TitleSetter);
-      setters.registerSetter('BehaviorSetter', BehaviorSetter);
       setters.registerSetter('CustomSetter', CustomSetter);
     },
   };

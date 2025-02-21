@@ -1,5 +1,6 @@
 import { IPublicModelPluginContext } from '@felce/lowcode-types';
 import AliLowCodeEngineExt from '@felce/lowcode-engine-ext';
+import '@felce/lowcode-engine-ext/dist/engine-ext.css';
 
 // 设置内置 setter 和事件绑定、插件绑定面板
 const DefaultSettersRegistryPlugin = (ctx: IPublicModelPluginContext) => {

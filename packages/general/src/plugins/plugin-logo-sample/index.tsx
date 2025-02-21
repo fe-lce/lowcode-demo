@@ -17,7 +17,7 @@ const Logo: React.FC<IProps> = (props): React.ReactElement => {
       <a
         className="logo"
         target="blank"
-        href={props.href || 'https://lowcode-engine.cn'}
+        href={props.href || 'https://felce.cn'}
         style={{ backgroundImage: `url(${props.logo})` }}
       />
       <div className="scenario-name">{scenarioDisplayName}</div>
@@ -61,7 +61,7 @@ const LogoSamplePlugin = (ctx: IPublicModelPluginContext) => {
         content: <Logo scenarioDisplayName={scenarioDisplayName} scenarioInfo={scenarioInfo} />,
         contentProps: {
           logo: 'https://img.alicdn.com/imgextra/i4/O1CN013w2bmQ25WAIha4Hx9_!!6000000007533-55-tps-137-26.svg',
-          href: 'https://lowcode-engine.cn',
+          href: 'https://felce.cn',
         },
         props: {
           align: 'left',

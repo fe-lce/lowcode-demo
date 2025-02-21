@@ -1,5 +1,5 @@
 import { material, project } from '@felce/lowcode-engine';
-import { filterPackages } from '@alilc/lowcode-plugin-inject';
+import { filterPackages } from '@felce/lowcode-plugin-inject';
 import { Message, Dialog } from '@alifd/next';
 import { IPublicTypeProjectSchema, IPublicEnumTransformStage } from '@felce/lowcode-types';
 import DefaultPageSchema from './defaultPageSchema.json';

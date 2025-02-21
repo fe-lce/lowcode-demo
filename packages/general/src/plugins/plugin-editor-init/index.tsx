@@ -1,5 +1,5 @@
 import { IPublicModelPluginContext } from '@felce/lowcode-types';
-import { injectAssets } from '@alilc/lowcode-plugin-inject';
+import { injectAssets } from '@felce/lowcode-plugin-inject';
 import assets from '../../services/assets.json';
 import { getProjectSchema } from '../../services/mockService';
 const EditorInitPlugin = (ctx: IPublicModelPluginContext, options: any) => {

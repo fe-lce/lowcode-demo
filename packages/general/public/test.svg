@@ -1,0 +1,16 @@
+<svg width="200" height="200" viewBox="0 0 200 200">
+  <!-- 定义渐变色（可选） -->
+  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffd700" />
+    <stop offset="100%" stop-color="#ff4500" />
+  </linearGradient>
+
+  <!-- 射线组：共12条，每30度旋转一次 -->
+  <g stroke="url(#gradient)" stroke-width="2">
+    <!-- 通过循环生成射线（实际需手动重复或通过脚本生成） -->
+    <line x1="100" y1="100" x2="100" y2="0" transform="rotate(0)" />
+    <!-- <line x1="0" y1="0" x2="70" y2="0" transform="rotate(30)" />
+    <line x1="0" y1="0" x2="70" y2="0" transform="rotate(60)" /> -->
+    <!-- ... 继续添加至360度 ... -->
+  </g>
+</svg>

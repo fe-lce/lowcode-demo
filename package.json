@@ -18,15 +18,15 @@
     "access": "public"
   },
   "config": {},
-  "dependencies": {
-  },
   "devDependencies": {
     "@types/events": "^3.0.3",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@types/streamsaver": "^2.0.5",
+    "@vitejs/plugin-react-swc": "^3.7.2",
     "fs-extra": "^10.0.1",
-    "vite": "^6.0.6",
-    "@vitejs/plugin-react-swc": "^3.7.2"
+    "less": "^4.2.2",
+    "sass-embedded": "^1.83.1",
+    "vite": "^6.0.6"
   }
 }

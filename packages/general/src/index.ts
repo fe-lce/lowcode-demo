@@ -1,32 +1,35 @@
+import { createFetchHandler } from '@alilc/lowcode-datasource-fetch-handler';
+// import CodeGenPlugin from '@alilc/lowcode-plugin-code-generator';
+import CodeEditorPlugin from '@felce/lowcode-plugin-code-editor';
 import * as LowcodeEngine from '@felce/lowcode-engine';
 import { init, plugins } from '@felce/lowcode-engine';
-import { createFetchHandler } from '@alilc/lowcode-datasource-fetch-handler';
-import EditorInitPlugin from './plugins/plugin-editor-init';
-import UndoRedoPlugin from '@alilc/lowcode-plugin-undo-redo';
-import ZhEnPlugin from '@alilc/lowcode-plugin-zh-en';
-import CodeGenPlugin from '@alilc/lowcode-plugin-code-generator';
-import DataSourcePanePlugin from '@alilc/lowcode-plugin-datasource-pane';
+import UndoRedoPlugin from '@felce/lowcode-plugin-undo-redo';
+import ZhEnPlugin from '@felce/lowcode-plugin-zh-en';
+// import DataSourcePanePlugin from '@felce/lowcode-plugin-datasource-pane';
 import SchemaPlugin from '@felce/lowcode-plugin-schema';
-import CodeEditorPlugin from '@alilc/lowcode-plugin-code-editor';
-import ManualPlugin from '@alilc/lowcode-plugin-manual';
-import InjectPlugin from '@alilc/lowcode-plugin-inject';
-import SimulatorResizerPlugin from '@alilc/lowcode-plugin-simulator-select';
-import ComponentPanelPlugin from '@alilc/lowcode-plugin-components-pane';
+import ManualPlugin from '@felce/lowcode-plugin-manual';
+import OutlinePlugin from '@felce/lowcode-plugin-outline-pane';
+import ComponentPanelPlugin from '@felce/lowcode-plugin-components-pane';
+import SimulatorResizerPlugin from '@felce/lowcode-plugin-simulator-select';
+import SetRefPropPlugin from '@felce/lowcode-plugin-set-ref-prop';
+import InjectPlugin from '@felce/lowcode-plugin-inject';
+// import LoadIncrementalAssetsWidgetPlugin from './plugins/plugin-load-incremental-assets-widget';
 import DefaultSettersRegistryPlugin from './plugins/plugin-default-setters-registry';
-import LoadIncrementalAssetsWidgetPlugin from './plugins/plugin-load-incremental-assets-widget';
+import EditorInitPlugin from './plugins/plugin-editor-init';
 import SaveSamplePlugin from './plugins/plugin-save-sample';
 import PreviewSamplePlugin from './plugins/plugin-preview-sample';
 import CustomSetterSamplePlugin from './plugins/plugin-custom-setter-sample';
-import SetRefPropPlugin from '@alilc/lowcode-plugin-set-ref-prop';
 import LogoSamplePlugin from './plugins/plugin-logo-sample';
-import SimulatorLocalePlugin from './plugins/plugin-simulator-locale';
-import lowcodePlugin from './plugins/plugin-lowcode-component';
-import appHelper from './appHelper';
-import './global.scss';
+// import SimulatorLocalePlugin from './plugins/plugin-simulator-locale';
+// import lowcodePlugin from './plugins/plugin-lowcode-component';
+import _ from 'lodash';
+import moment from 'moment';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
-import _ from 'lodash';
+import appHelper from './appHelper';
+
+import '@felce/lowcode-engine/dist/engine-core.css';
+import './global.scss';
 
 import packageJson from '../package.json';
 
@@ -37,7 +40,7 @@ window._ = _;
 (window as any).AliLowCodeEngine = LowcodeEngine;
 
 async function registerPlugins() {
-  // await plugins.register(InjectPlugin);
+  await plugins.register(InjectPlugin, null, { autoInit: true, override: true });
 
   await plugins.register(EditorInitPlugin, {
     scenarioName: 'general',
@@ -46,20 +49,23 @@ async function registerPlugins() {
       urls: [
         {
           key: '设计器',
-          value: 'https://github.com/alibaba/lowcode-demo/tree/main/demo-general',
+          value: 'https://github.com/fe-lce/lowcode-demo/tree/main/demo-general',
         },
-        {
-          key: 'fusion-ui 物料',
-          value: 'https://github.com/alibaba/lowcode-materials/tree/main/packages/fusion-ui',
-        },
-        {
-          key: 'fusion 物料',
-          value:
-            'https://github.com/alibaba/lowcode-materials/tree/main/packages/fusion-lowcode-materials',
-        },
+        // {
+        //   key: 'fusion-ui 物料',
+        //   value: 'https://github.com/fe-lce/lowcode-materials/tree/main/packages/fusion-ui',
+        // },
+        // {
+        //   key: 'fusion 物料',
+        //   value:
+        //     'https://github.com/fe-lce/lowcode-materials/tree/main/packages/fusion-lowcode-materials',
+        // },
       ],
     },
   });
+
+  // 注册大纲树插件
+  await plugins.register(OutlinePlugin, {}, { autoInit: true });
 
   // 设置内置 setter 和事件绑定、插件绑定面板
   await plugins.register(DefaultSettersRegistryPlugin);
@@ -68,19 +74,17 @@ async function registerPlugins() {
 
   await plugins.register(ComponentPanelPlugin);
 
-  await plugins.register(SchemaPlugin, { isProjectSchema: true });
+  await plugins.register(SchemaPlugin, { isProjectSchema: false });
 
   await plugins.register(ManualPlugin);
 
   // 注册回退/前进
-  // await plugins.register(UndoRedoPlugin);
+  await plugins.register(UndoRedoPlugin);
 
   // 注册中英文切换
-  // await plugins.register(ZhEnPlugin);
+  await plugins.register(ZhEnPlugin);
 
-  // await plugins.register(SetRefPropPlugin);
-
-  // await plugins.register(SimulatorResizerPlugin);
+  await plugins.register(SimulatorResizerPlugin);
 
   // await plugins.register(LoadIncrementalAssetsWidgetPlugin);
 
@@ -97,21 +101,23 @@ async function registerPlugins() {
   //   ],
   // });
 
-  // await plugins.register(CodeEditorPlugin);
+  await plugins.register(CodeEditorPlugin);
 
   // 注册出码插件
   // await plugins.register(CodeGenPlugin);
 
-  // await plugins.register(SaveSamplePlugin);
+  await plugins.register(SaveSamplePlugin);
 
-  // await plugins.register(PreviewSamplePlugin);
+  await plugins.register(PreviewSamplePlugin);
 
-  // await plugins.register(CustomSetterSamplePlugin);
+  await plugins.register(CustomSetterSamplePlugin);
 
   // 设计器区域多语言切换
   // await plugins.register(SimulatorLocalePlugin);
 
   // await plugins.register(lowcodePlugin);
+
+  await plugins.register(SetRefPropPlugin);
 }
 
 (async function main() {

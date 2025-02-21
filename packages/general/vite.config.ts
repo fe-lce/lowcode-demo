@@ -26,17 +26,14 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // sass解析错误，使用此方式解决
       '~@alifd': '@alifd',
-      // '@alilc/lowcode-plugin-schema': 'http://localhost:4173/src/index.ts',
-      // '@alilc/lowcode-plugin-schema': 'http://localhost:4173/index.es.js',
       '@alilc/lowcode-engine': '@felce/lowcode-engine',
       '@alilc/lowcode-types': '@felce/lowcode-types',
       '@alilc/lowcode-utils': '@felce/lowcode-utils',
+      '@alilc/lowcode-shell': '@felce/lowcode-shell',
       '@alilc/lowcode-designer': '@felce/lowcode-designer',
       '@alilc/lowcode-editor-core': '@felce/lowcode-core',
       '@alilc/lowcode-editor-skeleton': '@felce/lowcode-skeleton',
-      '@alilc/lowcode-engine-ext': '@felce/lowcode-engine-ext',
     },
   },
 });

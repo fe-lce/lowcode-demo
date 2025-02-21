@@ -5,7 +5,7 @@ import mergeWith from 'lodash/mergeWith';
 import isArray from 'lodash/isArray';
 import { buildComponents, assetBundle, AssetLevel, AssetLoader } from '@felce/lowcode-utils';
 import ReactRenderer from '@felce/lowcode-react-renderer';
-import { injectComponents } from '@alilc/lowcode-plugin-inject';
+import { injectComponents } from '@felce/lowcode-plugin-inject';
 import appHelper from './appHelper';
 import {
   getProjectSchemaFromLocalStorage,
